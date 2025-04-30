@@ -24,8 +24,9 @@ app = Flask(__name__)
 
 CORS(app,
      resources={r"/api/*": {"origins": [
-         "https://legal-chatbot-deploy-1-kpug.onrender.com",
-         "http://localhost:3000"
+         "https://legal-chatbot-deploy-1-kpug.onrender.com",  # this is your backend, doesn't need to be here
+         "http://localhost:3000",
+         "https://legal-chatbot-deploy-4t8k0rl68-vraj-patels-projects-d1c7de16.vercel.app"  # ✅ add this
      ]}},
      supports_credentials=True,
      methods=["GET", "POST", "OPTIONS"],
