@@ -21,8 +21,9 @@ from prompt_utils import usecase_prompt
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, 
-     resources={r"/*": {"origins": "https://legal-chatbot-deploy-frontend.onrender.com"}},
+CORS(app, origins=[
+    "https://legal-chatbot-deploy-g3iv97d7d-vraj-patels-projects-d1c7de16.vercel.app",
+    "http://localhost:3000"],
      supports_credentials=True,
      methods=["GET", "POST", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization"])
