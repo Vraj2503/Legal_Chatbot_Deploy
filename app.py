@@ -21,7 +21,7 @@ from prompt_utils import usecase_prompt
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, origins=["https://legal-chatbot-deploy-frontend.onrender.com"])  # Enable CORS for all routes
 
 # ChromaDB & Cloudflare setup
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
@@ -220,6 +220,13 @@ def upload_file():
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok"})
+
+@app.route('/')
+def index():
+    return jsonify({
+        "status": "online",
+        "message": "Legal Chatbot API is running. Available endpoints: /api/chat, /api/upload, /api/health"
+    })
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
